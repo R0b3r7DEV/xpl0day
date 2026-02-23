@@ -11,8 +11,8 @@ body {
 /* Sidebar */
 .sidebar {
     width: 260px;
-    background: var(--bg-darker);
-    border-right: 1px solid var(--border);
+    background: var(--bg-dark);
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     padding: 30px 0;
