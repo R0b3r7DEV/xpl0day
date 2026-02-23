@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile_HTB.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
+        <div class="sidebar-logo">XPL<span>0</span>DAY</div>
+        <nav class="sidebar-nav">
+            <a href="dashboard_HTB.html">DASHBOARD</a>
+            <a href="#">MÁQUINAS</a>
+            <a href="#">RETOS</a>
+            <a href="#">ACADEMIA</a>
+            <a href="#">EQUIPOS</a>
+            <a href="#" id="logoutBtn" class="logout-link">⏻ DESCONECTAR</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar" id="sidebarAvatar">RT</div>
+            <div class="user-info">
+                <p class="username" id="sidebarUsername">Root_User</p>
+                <p class="rank" id="sidebarRank">Script Kiddie</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Perfil de Usuario</h1>
+            <div class="stats-overview">
+                <div class="mini-stat">Puntos: <span id="headerPoints">0</span></div>
+                <div class="mini-stat">Rank: <span id="headerRank">#—</span></div>
+            </div>
+        </header>
+
+        <!-- TARJETA PRINCIPAL DEL PERFIL -->
+        <section class="profile-hero">
+            <div class="profile-avatar-wrap">
+                <div class="profile-avatar" id="profileAvatar">RT</div>
+                <div class="avatar-ring"></div>
+            </div>
+            <div class="profile-info">
+                <h2 id="profileUsername">Root_User</h2>
+                <span class="profile-rank-badge" id="profileRank">Script Kiddie</span>
+                <p class="profile-joined">Miembro desde <span id="profileJoined">—</span></p>
+            </div>
+            <div class="profile-quick-stats">
+                <div class="quick-stat">
+                    <span class="quick-value" id="quickPoints">0</span>
+                    <span class="quick-label">Puntos</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-value" id="quickMachines">0</span>
+                    <span class="quick-label">Máquinas</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-value" id="quickFlags">0</span>
+                    <span class="quick-label">Flags</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="profile-grid">
+
+            <!-- ESTADÍSTICAS Y RANKING -->
+            <div class="card stats-card">
+                <h3>Estadísticas</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Posición global</span>
+                    <span class="stat-value green" id="statRanking">#12,402</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Puntos totales</span>
+                    <span class="stat-value" id="statPoints">150</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Máquinas completadas</span>
+                    <span class="stat-value" id="statMachines">3</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Retos completados</span>
+                    <span class="stat-value" id="statChallenges">7</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Rango actual</span>
+                    <span class="stat-value green" id="statRank">Script Kiddie</span>
+                </div>
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+            <div class="card progress-card">
+                <h3>Progreso de Rango</h3>
+                <div class="rank-journey">
+                    <div class="rank-step done">Script Kiddie</div>
+                    <div class="rank-arrow">▶</div>
+                    <div class="rank-step current">Hacker</div>
+                    <div class="rank-arrow">▶</div>
+                    <div class="rank-step">Pro Hacker</div>
+                    <div class="rank-arrow">▶</div>
+                    <div class="rank-step">Elite</div>
+                </div>
+                <div class="progress-info">
+                    <span id="progressLabel">150 / 500 puntos para <strong>Hacker</strong></span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 30%;"></div>
+                </div>
+                <p class="progress-hint">Te faltan <span class="green" id="pointsLeft">350</span> puntos para subir de rango</p>
+            </div>
+
+            <!-- ACTIVIDAD RECIENTE -->
+            <div class="card activity-card">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <span class="activity-icon success">✔</span>
+                        <div class="activity-detail">
+                            <p class="activity-text">Completó la máquina <span class="green">Inception</span></p>
+                            <p class="activity-time">Hace 2 días</p>
+                        </div>
+                        <span class="activity-points">+20 pts</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon success">✔</span>
+                        <div class="activity-detail">
+                            <p class="activity-text">Resolvió el reto <span class="green">CryptoBasic</span></p>
+                            <p class="activity-time">Hace 5 días</p>
+                        </div>
+                        <span class="activity-points">+15 pts</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon warning">⚑</span>
+                        <div class="activity-detail">
+                            <p class="activity-text">Inició ataque a <span class="green">X-Vault</span></p>
+                            <p class="activity-time">Hace 1 semana</p>
+                        </div>
+                        <span class="activity-points">En progreso</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon success">✔</span>
+                        <div class="activity-detail">
+                            <p class="activity-text">Completó módulo <span class="green">Nmap Basics</span></p>
+                            <p class="activity-time">Hace 2 semanas</p>
+                        </div>
+                        <span class="activity-points">+10 pts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BADGES / LOGROS -->
+            <div class="card badges-card">
+                <h3>Logros</h3>
+                <div class="badges-grid">
+                    <div class="badge earned">
+                        <div class="badge-icon">🎯</div>
+                        <p class="badge-name">Primera Flag</p>
+                        <p class="badge-desc">Captura tu primera flag</p>
+                    </div>
+                    <div class="badge earned">
+                        <div class="badge-icon">🔍</div>
+                        <p class="badge-name">Reconocimiento</p>
+                        <p class="badge-desc">Completa un escaneo Nmap</p>
+                    </div>
+                    <div class="badge earned">
+                        <div class="badge-icon">💻</div>
+                        <p class="badge-name">Primer Login</p>
+                        <p class="badge-desc">Accede por primera vez</p>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">🔓</div>
+                        <p class="badge-name">Escalada</p>
+                        <p class="badge-desc">Consigue root en una máquina</p>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">🏆</div>
+                        <p class="badge-name">Hacker</p>
+                        <p class="badge-desc">Alcanza el rango Hacker</p>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">⚡</div>
+                        <p class="badge-name">Speed Run</p>
+                        <p class="badge-desc">Completa una máquina en menos de 1h</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/profile-logic_HTB.js"></script>
+
+</body>
+</html>
