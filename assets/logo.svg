@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <style>
+    .logocls { fill: none; stroke: #9fef00; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px; }
+  </style>
+  <path class="logocls" d="M12,22s8-4,8-10V5l-8-3-8,3v7C4,18,12,22,12,22Z"/>
+  <polyline class="logocls" points="8 8 12 12 8 16"/>
+  <line class="logocls" x1="12" y1="16" x2="16" y2="16"/>
+</svg>

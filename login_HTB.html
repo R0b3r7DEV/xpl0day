@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Login Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login_HTB.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <header class="login-header">
+            <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
+            
+        </header>
+
+        <main class="login-card">
+            <div class="card-top-bar"></div>
+            <div class="card-content">
+                <h2>IDENTIFICACIÓN REQUERIDA</h2>
+                <p class="subtitle">Ingresa tus credenciales para acceder a la red.</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">USUARIO</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">#</span>
+                            <input type="text" id="username" placeholder="admin_user" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">CONTRASEÑA</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">></span>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">INICIAR SESIÓN</button>
+                </form>
+
+                <div class="auth-footer">
+                    <a href="#">Recuperar acceso</a>
+                    <span class="divider">|</span>
+                    <a href="register_HTB.html">Crear cuenta</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="system-status">
+            <div class="status-indicator">
+                <span class="dot pulse"></span> SYSTEM: ONLINE
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script_HTB.js"></script>
+    
+</body>
+</html>

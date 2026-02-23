@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0d1f12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#050d0a;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#9fef00;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#9fef00;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="hexClip">
+      <polygon points="200,10 380,105 380,295 200,390 20,295 20,105"/>
+    </clipPath>
+  </defs>
+
+  <!-- Fondo hexagonal -->
+  <polygon points="200,10 380,105 380,295 200,390 20,295 20,105" fill="url(#bgGrad)" stroke="#9fef00" stroke-width="2" filter="url(#glow)"/>
+  <polygon points="200,10 380,105 380,295 200,390 20,295 20,105" fill="url(#glowGrad)"/>
+
+  <!-- Hexágono interior decorativo -->
+  <polygon points="200,30 360,115 360,285 200,370 40,285 40,115" fill="none" stroke="#9fef00" stroke-width="0.5" opacity="0.3"/>
+  <polygon points="200,55 340,130 340,270 200,345 60,270 60,130" fill="none" stroke="#9fef00" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Líneas de escáner decorativas -->
+  <line x1="40" y1="160" x2="360" y2="160" stroke="#9fef00" stroke-width="0.4" opacity="0.2"/>
+  <line x1="40" y1="200" x2="360" y2="200" stroke="#9fef00" stroke-width="0.4" opacity="0.2"/>
+  <line x1="40" y1="240" x2="360" y2="240" stroke="#9fef00" stroke-width="0.4" opacity="0.2"/>
+  <line x1="40" y1="280" x2="360" y2="280" stroke="#9fef00" stroke-width="0.4" opacity="0.15"/>
+
+  <!-- Cuerpo / Capucha -->
+  <ellipse cx="200" cy="420" rx="130" ry="80" fill="#0a1a0f" clip-path="url(#hexClip)"/>
+  
+  <!-- Capucha parte superior -->
+  <path d="M110,280 Q130,180 200,155 Q270,180 290,280 Q260,310 200,320 Q140,310 110,280Z" fill="#0e2415"/>
+  <path d="M120,275 Q140,185 200,162 Q260,185 280,275" fill="none" stroke="#9fef00" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Cara / Máscara -->
+  <ellipse cx="200" cy="225" rx="62" ry="72" fill="#0a1a0f"/>
+  <ellipse cx="200" cy="225" rx="60" ry="70" fill="#091508"/>
+
+  <!-- Ojos neón -->
+  <ellipse cx="176" cy="210" rx="18" ry="10" fill="#0a1a0f" stroke="#9fef00" stroke-width="1.5" filter="url(#glow)"/>
+  <ellipse cx="224" cy="210" rx="18" ry="10" fill="#0a1a0f" stroke="#9fef00" stroke-width="1.5" filter="url(#glow)"/>
+  
+  <!-- Pupilas / iris -->
+  <ellipse cx="176" cy="210" rx="10" ry="7" fill="#9fef00" opacity="0.9" filter="url(#strongGlow)"/>
+  <ellipse cx="224" cy="210" rx="10" ry="7" fill="#9fef00" opacity="0.9" filter="url(#strongGlow)"/>
+  <ellipse cx="176" cy="210" rx="5" ry="4" fill="#ffffff" opacity="0.6"/>
+  <ellipse cx="224" cy="210" rx="5" ry="4" fill="#ffffff" opacity="0.6"/>
+
+  <!-- Máscara inferior / boca -->
+  <rect x="162" y="235" width="76" height="35" rx="6" fill="#0d1f12" stroke="#9fef00" stroke-width="1" opacity="0.9"/>
+  <!-- Rejilla de la máscara -->
+  <line x1="162" y1="247" x2="238" y2="247" stroke="#9fef00" stroke-width="0.6" opacity="0.5"/>
+  <line x1="162" y1="258" x2="238" y2="258" stroke="#9fef00" stroke-width="0.6" opacity="0.5"/>
+  <line x1="186" y1="235" x2="186" y2="270" stroke="#9fef00" stroke-width="0.6" opacity="0.5"/>
+  <line x1="200" y1="235" x2="200" y2="270" stroke="#9fef00" stroke-width="0.6" opacity="0.5"/>
+  <line x1="214" y1="235" x2="214" y2="270" stroke="#9fef00" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Detalles tecnológicos en la cara -->
+  <line x1="138" y1="205" x2="158" y2="205" stroke="#9fef00" stroke-width="1" opacity="0.6" filter="url(#glow)"/>
+  <line x1="242" y1="205" x2="262" y2="205" stroke="#9fef00" stroke-width="1" opacity="0.6" filter="url(#glow)"/>
+  <circle cx="135" cy="205" r="3" fill="#9fef00" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="265" cy="205" r="3" fill="#9fef00" opacity="0.8" filter="url(#glow)"/>
+
+  <!-- Texto R0b3r7 -->
+  <text x="200" y="308" font-family="Ubuntu Mono, monospace" font-size="13" font-weight="bold" fill="#9fef00" text-anchor="middle" letter-spacing="3" filter="url(#glow)">R0b3r7DEV</text>
+
+  <!-- Esquinas decorativas tipo HUD -->
+  <line x1="55" y1="130" x2="75" y2="130" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="55" y1="130" x2="55" y2="150" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  
+  <line x1="345" y1="130" x2="325" y2="130" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="345" y1="130" x2="345" y2="150" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  
+  <line x1="55" y1="270" x2="75" y2="270" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="55" y1="270" x2="55" y2="250" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  
+  <line x1="345" y1="270" x2="325" y2="270" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="345" y1="270" x2="345" y2="250" stroke="#9fef00" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Texto HUD pequeño -->
+  <text x="68" y="127" font-family="Ubuntu Mono, monospace" font-size="7" fill="#9fef00" opacity="0.6">ID::</text>
+  <text x="290" y="127" font-family="Ubuntu Mono, monospace" font-size="7" fill="#9fef00" opacity="0.6">XPL0</text>
+  <text x="58" y="290" font-family="Ubuntu Mono, monospace" font-size="7" fill="#9fef00" opacity="0.6">SEC</text>
+  <text x="285" y="290" font-family="Ubuntu Mono, monospace" font-size="7" fill="#9fef00" opacity="0.6">DAY</text>
+</svg>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard_HTB.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
+        <div class="sidebar-logo">XPL<span>0</span>DAY</div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active">DASHBOARD</a>
+            <a href="#">MÁQUINAS</a>
+            <a href="#">RETOS</a>
+            <a href="#">ACADEMIA</a>
+            <a href="#">EQUIPOS</a>
+
+            <a href="#" id="logoutBtn" class="logout-link">⏻ DESCONECTAR</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">RT</div>
+            <div class="user-info">
+                <p class="username">Root_User</p>
+                <p class="rank">Script Kiddie</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Panel de Control</h1>
+            <div class="stats-overview">
+                <div class="mini-stat">Puntos: <span>150</span></div>
+                <div class="mini-stat">Rank: <span>#12,402</span></div>
+            </div>
+        </header>
+
+        <section class="grid-container">
+            <div class="card progress-card">
+                <h3>Tu Progreso</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 35%;"></div>
+                </div>
+                <p>35% para subir a <strong>Hacker</strong></p>
+            </div>
+
+            <div class="card machines-card">
+                <h3>Máquinas Activas</h3>
+                <table class="machine-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Dificultad</th>
+                            <th>Puntos</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Inception</td>
+                            <td><span class="diff easy">Fácil</span></td>
+                            <td>20</td>
+                            <td><button class="btn-pwn">HACK</button></td>
+                        </tr>
+                        <tr>
+                            <td>X-Vault</td>
+                            <td><span class="diff medium">Media</span></td>
+                            <td>30</td>
+                            <td><button class="btn-pwn">HACK</button></td>
+                        </tr>
+                        <tr>
+                            <td>BlackHole</td>
+                            <td><span class="diff hard">Difícil</span></td>
+                            <td>50</td>
+                            <td><button class="btn-pwn">HACK</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card activity-card">
+                <h3>Consola de Actividad</h3>
+                <div class="terminal-mini">
+                    <p>[10:45] Conexión establecida con VPN_Europe</p>
+                    <p>[11:12] Máquina 'Inception' marcada como objetivo</p>
+                    <p>[11:30] Escaneo Nmap completado en 10.10.11.5</p>
+                    <p class="blink">_</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/dashboard-logic_HTB.js"></script>
+
+</body>
+</html>

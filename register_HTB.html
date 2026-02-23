@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Join the Ranks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/register_HTB.css">
+</head>
+<body>
+
+    <div class="register-wrapper">
+        <header class="register-header">
+            <a href="index_HTB.html" class="logo">
+                <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
+                XPL<span>0</span>DAY
+            </a>
+        </header>
+
+        <main class="register-card">
+            <div class="card-top-bar"></div>
+            
+            <div class="card-content">
+                <h2>NUEVO RECLUTA</h2>
+                <p class="subtitle">Completa tu perfil para acceder a los laboratorios.</p>
+
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="input-group half-width">
+                            <label for="username">USUARIO (CALLSIGN)</label>
+                            <div class="input-wrapper">
+                                <span class="prefix">@</span>
+                                <input type="text" id="username" placeholder="neo_hax" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group half-width">
+                            <label for="email">CORREO ELECTRÓNICO</label>
+                            <div class="input-wrapper">
+                                <span class="prefix">✉</span>
+                                <input type="email" id="email" placeholder="neo@matrix.net" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group half-width">
+                            <label for="password">CONTRASEÑA</label>
+                            <div class="input-wrapper">
+                                <span class="prefix">#</span>
+                                <input type="password" id="password" placeholder="Min. 8 chars" required minlength="8">
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar" id="strengthBar"></div>
+                            </div>
+                        </div>
+
+                        <div class="input-group half-width">
+                            <label for="confirm_password">CONFIRMAR CONTRASEÑA</label>
+                            <div class="input-wrapper">
+                                <span class="prefix">#</span>
+                                <input type="password" id="confirm_password" placeholder="Repite la clave" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group invite-section">
+                        <label for="invite_code">CÓDIGO DE INVITACIÓN (OPCIONAL)</label>
+                        <div class="input-wrapper invite-wrapper">
+                            <span class="prefix">></span>
+                            <input type="text" id="invite_code" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+                            <button type="button" class="btn-verify" id="verifyBtn">VERIFICAR</button>
+                        </div>
+                        <p class="invite-msg" id="inviteMsg"></p>
+                    </div>
+
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Acepto no atacar objetivos fuera del entorno del laboratorio (Rules of Engagement).</label>
+                    </div>
+
+                    <button type="submit" class="register-btn">INICIALIZAR CUENTA</button>
+                </form>
+
+                <div class="auth-footer">
+                    <span class="text-muted">¿Ya tienes acceso?</span>
+                    <a href="login.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="system-status">
+            <div class="status-indicator">
+                <span class="dot green-pulse"></span> REGISTRATION SERVER: <span class="text-green">ONLINE</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/register-logic_HTB.js"></script>
+</body>
+</html>

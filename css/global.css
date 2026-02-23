@@ -1,0 +1,55 @@
+/* css/global.css */
+
+/* 1. VARIABLES GLOBALES (Si cambias el verde aquí, cambia en toda la web) */
+:root {
+    --primary: #9fef00;
+    --primary-dark: #7ac200;
+    --bg-dark: #080d16;
+    --bg-card: #111927;
+    --border-color: #1e293b;
+    --text-main: #a4b1cd;
+    --text-white: #ffffff;
+    --error: #ff5f56;
+    --warning: #ffbd2e;
+    --font-mono: 'Ubuntu Mono', monospace;
+}
+
+/* 2. RESETEO BÁSICO PARA TODA LA WEB */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--text-white);
+}
+
+/* 3. ESTILOS DEL LOGO (Compartido en todas las páginas) */
+.logo, .sidebar-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-white);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-logo {
+    justify-content: center; /* Solo el sidebar necesita centrarlo horizontalmente */
+    margin-bottom: 50px;
+    font-size: 1.8rem;
+}
+
+.logo span, .sidebar-logo span {
+    color: var(--primary);
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+}

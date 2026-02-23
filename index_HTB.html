@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Advanced Cyber Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index_HTB.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
+            <a href="index_HTB.html" class="logo">XPL<span>0</span>DAY</a>
+            <ul class="nav-menu">
+                <li><a href="#labs">Laboratorios</a></li>
+                <li><a href="#academy">Academia</a></li>
+                <li><a href="#pro">Pro Labs</a></li>
+                <li><a href="login_HTB.html" class="btn-secondary">Log In</a></li>
+                <li><a href="register_HTB.html" class="btn-primary">Únete</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch">Eleva tus habilidades de <span>Hacking</span></h1>
+            <p>La plataforma definitiva para entusiastas de la ciberseguridad. Aprende, entrena y domina el arte del pentesting en entornos controlados.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-primary">Empezar ahora</a>
+                <a href="#" class="btn-outline">Ver Máquinas</a>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-bar">
+                <span class="t-dot red"></span>
+                <span class="t-dot yellow"></span>
+                <span class="t-dot green"></span>
+                <p>root@xpl0day: ~</p>
+            </div>
+            <div class="terminal-body">
+                <p><span class="t-green">➜</span> <span class="t-blue">~</span> nmap -Pn -sC -sV 10.10.11.20</p>
+                <p>Nmap scan report for xpl0day.htb</p>
+                <p>PORT   STATE SERVICE VERSION</p>
+                <p>80/tcp open  http    Apache/2.4.41</p>
+                <p>22/tcp open  ssh     OpenSSH 8.2p1</p>
+                <p><span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span></p>
+            </div>
+        </div>
+    </header>
+
+    <section id="labs" class="stats-section">
+        <div class="stat-card">
+            <h2>+200</h2>
+            <p>Máquinas Activas</p>
+        </div>
+        <div class="stat-card">
+            <h2>50</h2>
+            <p>Retos Pro</p>
+        </div>
+        <div class="stat-card">
+            <h2>24/7</h2>
+            <p>Soporte Comunidad</p>
+        </div>
+    </section>
+    
+</body>
+</html>

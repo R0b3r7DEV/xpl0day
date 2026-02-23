@@ -1,0 +1,167 @@
+/* Variables de color estilo HackTheBox */
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* Navegación */
+.navbar {
+    height: 80px;
+    background: #080d16;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-menu li a {
+    color: var(--text-gray);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: var(--primary);
+}
+
+/* Botones */
+.btn-primary {
+    background: var(--primary);
+    color: #000 !important;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-outline {
+    border: 1px solid var(--primary);
+    color: var(--primary) !important;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 50px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Terminal */
+.terminal {
+    flex: 1;
+    min-width: 350px;
+    background: #05080f;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.terminal-bar {
+    background: #1e293b;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.t-dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-bar p {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    font-family: 'Ubuntu Mono', monospace;
+    color: #888;
+}
+
+.terminal-body {
+    padding: 20px;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.t-green { color: var(--primary); }
+.t-blue { color: #5fb3b3; }
+
+.blink {
+    animation: blinker 1s linear infinite;
+    border-left: 8px solid var(--primary);
+}
+
+@keyframes blinker { 50% { opacity: 0; } }
+
+/* Stats */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 50px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.stat-card h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+}
