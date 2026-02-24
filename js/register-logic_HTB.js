@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 alert(`¡Bienvenido a la red, ${username}! Ahora inicia sesión.`);
                 // Redirigir a la página de login
-                window.location.href = "login_HTB.html"; 
+                window.location.href = "test_HTB.html"; 
             }, 800);
         }, 1500);
     });

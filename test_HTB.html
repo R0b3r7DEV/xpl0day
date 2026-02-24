@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPL0DAY | Test de Nivel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/test_HTB.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <div class="test-wrapper">
+
+        <!-- CABECERA -->
+        <header class="test-header">
+            <img src="assets/logo.svg" alt="XPL0DAY" class="logo-icon">
+            <span class="logo">XPL<span>0</span>DAY</span>
+            <span class="test-label">// EVALUACIÓN DE NIVEL</span>
+        </header>
+
+        <!-- PANTALLA DE INICIO -->
+        <div id="screenIntro" class="screen active">
+            <div class="intro-card">
+                <div class="card-top-bar"></div>
+                <div class="intro-body">
+                    <h2>ANÁLISIS DE CAPACIDADES</h2>
+                    <p class="subtitle">Antes de acceder a los laboratorios necesitamos evaluar tu nivel actual.</p>
+                    <div class="intro-info">
+                        <div class="info-item">
+                            <span class="info-icon">📋</span>
+                            <span>15 preguntas</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">⏱️</span>
+                            <span>~5 minutos</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🎯</span>
+                            <span>7 categorías</span>
+                        </div>
+                    </div>
+                    <div class="intro-topics">
+                        <span class="topic-tag">Redes</span>
+                        <span class="topic-tag">Linux</span>
+                        <span class="topic-tag">Kali Linux</span>
+                        <span class="topic-tag">Windows</span>
+                        <span class="topic-tag">Web</span>
+                        <span class="topic-tag">Criptografía</span>
+                        <span class="topic-tag">Herramientas</span>
+                    </div>
+                    <button class="btn-start" id="btnStart">INICIAR EVALUACIÓN</button>
+                    <p class="intro-hint">No hay respuestas incorrectas. Sé honesto para obtener recomendaciones precisas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DEL TEST -->
+        <div id="screenTest" class="screen">
+            <div class="test-card">
+                <div class="card-top-bar"></div>
+                <div class="test-progress-bar">
+                    <div class="test-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="test-body">
+                    <div class="question-meta">
+                        <span class="question-category" id="questionCategory">REDES</span>
+                        <span class="question-counter" id="questionCounter">1 / 15</span>
+                    </div>
+                    <h3 class="question-text" id="questionText">¿Cuál es el rango de puertos bien conocidos?</h3>
+                    <div class="options-grid" id="optionsGrid">
+                        <!-- Generado por JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADO -->
+        <div id="screenResult" class="screen">
+            <div class="result-card">
+                <div class="card-top-bar"></div>
+                <div class="result-body">
+                    <div class="result-avatar" id="resultAvatar">SK</div>
+                    <h2 id="resultTitle">SCRIPT KIDDIE</h2>
+                    <p class="result-score" id="resultScore">Has respondido correctamente X de 15 preguntas</p>
+                    <p class="result-desc" id="resultDesc"></p>
+
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="statCorrect">0</span>
+                            <span class="result-stat-label">Correctas</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="statPercent">0%</span>
+                            <span class="result-stat-label">Precisión</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="statLevel">—</span>
+                            <span class="result-stat-label">Nivel</span>
+                        </div>
+                    </div>
+
+                    <div class="recommendations" id="recommendations">
+                        <h4>// MÁQUINAS RECOMENDADAS PARA TI</h4>
+                        <div class="rec-list" id="recList"></div>
+                    </div>
+
+                    <button class="btn-start" id="btnDashboard">ACCEDER A LOS LABORATORIOS →</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/test-logic_HTB.js"></script>
+</body>
+</html>
