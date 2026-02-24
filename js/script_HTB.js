@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('xpl0day_active_user', JSON.stringify(validUser));
 
                     setTimeout(() => {
-                        window.location.href = "dashboard_HTB.html";
+                        if (!validUser.testCompleted) {
+                            window.location.href = "test_HTB.html";
+                        } else {
+                            window.location.href = "dashboard_HTB.html";
+                        }
                     }, 800);
                 }
             }, 600);
