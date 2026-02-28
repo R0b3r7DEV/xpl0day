@@ -10,20 +10,21 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=spring-boot&logoColor=white)
+![Claude AI](https://img.shields.io/badge/Claude_AI-D97757?style=flat&logo=anthropic&logoColor=white)
 
 ---
 
 ## 🇪🇸 Descripción
 
-**XPL0DAY** es una plataforma web de entrenamiento en ciberseguridad desarrollada como proyecto personal durante el primer curso del CFGS Desarrollo de Aplicaciones Web. Inspirada en HackTheBox, permite a los usuarios registrarse, iniciar sesión y acceder a un dashboard con máquinas virtuales, retos y una consola de actividad en tiempo real.
+**XPL0DAY** es una plataforma web de entrenamiento en ciberseguridad desarrollada como proyecto personal durante el primer curso del CFGS Desarrollo de Aplicaciones Web. Inspirada en HackTheBox, permite a los usuarios registrarse, completar un test de nivel inicial, y acceder a un dashboard con máquinas virtuales, retos y un asistente de IA en tiempo real.
 
-El proyecto nace de la experiencia real del desarrollador en plataformas de pentesting y bug bounty, con el objetivo de aplicar los conocimientos adquiridos en clase a un entorno práctico y real. A diferencia de otras plataformas similares, XPL0DAY incorporará funcionalidades únicas orientadas al aprendizaje guiado y la proyección profesional del usuario.
+El proyecto nace de la experiencia real del desarrollador en plataformas de pentesting y bug bounty, con el objetivo de aplicar los conocimientos adquiridos en clase a un entorno práctico y real. A diferencia de otras plataformas similares, XPL0DAY incorpora funcionalidades únicas orientadas al aprendizaje guiado y la proyección profesional del usuario.
 
 ## 🇺🇸 Description
 
-**XPL0DAY** is a web-based cybersecurity training platform developed as a personal project during the first year of a Web Application Development degree. Inspired by HackTheBox, it allows users to register, log in, and access a dashboard featuring virtual machines, challenges, and a real-time activity console.
+**XPL0DAY** is a web-based cybersecurity training platform developed as a personal project during the first year of a Web Application Development degree. Inspired by HackTheBox, it allows users to register, complete an initial skill assessment, and access a dashboard featuring virtual machines, challenges, and a real-time AI assistant.
 
-The project is built from the developer's hands-on experience in pentesting platforms and bug bounty hunting, and will include unique features focused on guided learning and professional growth.
+The project is built from the developer's hands-on experience in pentesting platforms and bug bounty hunting, and includes unique features focused on guided learning and professional growth.
 
 ---
 
@@ -32,27 +33,31 @@ The project is built from the developer's hands-on experience in pentesting plat
 - ✅ Landing page con terminal animada y sección "Cómo funciona" / Landing page with animated terminal and "How it works" section
 - ✅ Registro de usuarios con validación y medidor de contraseña / User registration with validation and password strength meter
 - ✅ Login con gestión de sesión / Login with session management
+- ✅ **Test de nivel inicial** — 15 preguntas en 7 categorías que asignan rango automáticamente / Initial skill assessment with automatic rank assignment
 - ✅ Dashboard con máquinas activas, consola de actividad y progreso de rango / Dashboard with active machines, activity console and rank progress
 - ✅ Página de perfil con estadísticas, badges y progreso de rango / Profile page with stats, badges and rank progress
-- ✅ Página de máquinas con filtros por dificultad, SO y estado / Machines page with filters by difficulty, OS and status
-- ✅ Buscador de máquinas en tiempo real / Real-time machine search
+- ✅ Página de máquinas con grid, filtros por dificultad/SO/estado y buscador en tiempo real / Machines page with grid, filters and real-time search
+- ✅ **Enigma** — Asistente de IA flotante universal conectado a Claude API, con animación de robot androide, historial de conversación y hints adaptados al rango del usuario / Universal floating AI assistant powered by Claude API
 - ✅ Sistema de logout seguro / Secure logout system
 - ✅ Diseño responsive / Responsive design
 
 ---
 
-## 💡 Funcionalidades únicas en desarrollo / Unique Features in Development
+## 💡 Funcionalidades únicas / Unique Features
 
 Estas funcionalidades diferencian XPL0DAY de otras plataformas como HackTheBox:
 
 > **🧠 Test de nivel inicial / Initial skill assessment**  
-> Al registrarse, el usuario responde un test que evalúa su nivel real en ciberseguridad. El sistema le asigna un perfil (principiante, intermedio, avanzado) y le recomienda automáticamente máquinas y cursos adaptados. Ninguna plataforma similar hace esto de forma guiada.
+> Al registrarse, el usuario responde 15 preguntas sobre Redes, Linux, Kali Linux, Windows, Web, Criptografía y Herramientas. El sistema asigna automáticamente un rango (Script Kiddie, Hacker o Elite) y recomienda máquinas adaptadas a su nivel.
 
-> **📄 Generador de informes de pentest / Pentest report generator**  
-> Al completar una máquina, el usuario puede generar un informe profesional en PDF con las vulnerabilidades encontradas, el vector de ataque y recomendaciones de mitigación. Una herramienta real de aprendizaje con salida profesional directa al CV.
+> **🤖 Enigma — AI Assistant**  
+> Robot androide flotante con animaciones SVG que acompaña al usuario en toda la plataforma. Conectado a Claude AI, da hints progresivos sobre máquinas CTF sin spoilear la solución, adapta sus respuestas al rango del usuario y mantiene historial de conversación. Ninguna plataforma similar tiene algo parecido.
 
-> **🌐 Perfil público compartible / Shareable public profile**  
-> Cada usuario tendrá una URL pública con sus estadísticas, badges y máquinas completadas. Una forma de mostrar habilidades reales en LinkedIn o entrevistas de trabajo, y un canal de crecimiento orgánico para la plataforma.
+> **📄 Generador de informes de pentest / Pentest report generator** *(en desarrollo)*  
+> Al completar una máquina, el usuario podrá generar un informe profesional en PDF. Una herramienta con salida directa al CV.
+
+> **🌐 Perfil público compartible / Shareable public profile** *(en desarrollo)*  
+> URL pública con estadísticas y badges para mostrar en LinkedIn o entrevistas.
 
 ---
 
@@ -64,6 +69,8 @@ Estas funcionalidades diferencian XPL0DAY de otras plataformas como HackTheBox:
 | CSS3 + Variables CSS | Estilos y diseño global |
 | JavaScript (Vanilla) | Lógica de negocio y sesión |
 | LocalStorage | Persistencia de datos en cliente |
+| SVG animado | Robot Enigma y logo |
+| Claude AI API | Asistente Enigma en tiempo real |
 | Google Fonts (Ubuntu Mono) | Tipografía temática |
 | Java + Spring Boot *(próximo)* | Backend y API REST |
 | MySQL *(próximo)* | Base de datos |
@@ -98,23 +105,28 @@ xpl0day/
 ├── index_HTB.html          # Landing page
 ├── login_HTB.html          # Login
 ├── register_HTB.html       # Registro / Register
+├── test_HTB.html           # Test de nivel inicial / Skill assessment
 ├── dashboard_HTB.html      # Panel de control / Dashboard
 ├── profile_HTB.html        # Perfil de usuario / User profile
 ├── machines_HTB.html       # Página de máquinas / Machines page
+├── chatbot_HTB.html        # Chatbot standalone
 ├── css/
 │   ├── global.css          # Variables y estilos globales
 │   ├── index_HTB.css
 │   ├── login_HTB.css
 │   ├── register_HTB.css
+│   ├── test_HTB.css
 │   ├── dashboard_HTB.css
 │   ├── profile_HTB.css
 │   └── machines_HTB.css
 ├── js/
 │   ├── script_HTB.js             # Lógica de login
 │   ├── register-logic_HTB.js     # Lógica de registro
+│   ├── test-logic_HTB.js         # Lógica del test de nivel
 │   ├── dashboard-logic_HTB.js    # Lógica del dashboard
 │   ├── profile-logic_HTB.js      # Lógica del perfil
-│   └── machines-logic_HTB.js     # Lógica de máquinas
+│   ├── machines-logic_HTB.js     # Lógica de máquinas
+│   └── enigma.js                 # 🤖 Asistente Enigma (universal)
 └── assets/
     ├── logo.svg
     └── avatar_R0b3r7DEV.svg
@@ -122,18 +134,40 @@ xpl0day/
 
 ---
 
+## 🔄 Flujo de usuario / User flow
+
+```
+Landing → Registro → Login → Test de Nivel → Dashboard → Máquinas / Perfil
+                                                    ↕
+                                             🤖 Enigma (siempre disponible)
+```
+
+---
+
 ## 🗺️ Roadmap
 
+### v0.1 — Completado ✅
+- [x] Landing page, login y registro
+- [x] Dashboard con consola de actividad
+- [x] Sistema de sesión con LocalStorage
+
 ### v0.2 — Completado ✅
-- [x] Corrección de variables CSS inconsistentes
-- [x] Página de perfil con stats, badges y progreso de rango
+- [x] Corrección de variables CSS
+- [x] Página de perfil con stats y badges
 - [x] Página de máquinas con filtros y buscador
 - [x] Sección "Cómo funciona" y footer en landing
-- [x] Perfil enlazado desde sidebar
 
-### v0.3 — En progreso / In progress
-- [ ] Test de nivel inicial para nuevos usuarios
+### v0.3 — Completado ✅
+- [x] Test de nivel inicial con 15 preguntas y 7 categorías
+- [x] Rango asignado automáticamente según resultado
+- [x] Recomendaciones de máquinas personalizadas
+- [x] Flujo correcto: Registro → Login → Test → Dashboard
+- [x] **Enigma** — robot androide flotante con Claude AI integrado
+- [x] Historial de conversación y hints adaptados al rango
+
+### v0.4 — Próximamente / Coming soon
 - [ ] Página de Retos / Challenges page
+- [ ] Dashboard con datos dinámicos del usuario
 - [ ] Generador de informes PDF al completar máquina
 - [ ] Animaciones de transición entre páginas
 
@@ -158,6 +192,6 @@ Developed by **[R0b3r7DEV](https://github.com/R0b3r7DEV)**, a DAW student with e
 
 ## ⚠️ Aviso / Disclaimer
 
-🇪🇸 Este proyecto es únicamente con fines educativos. No almacena datos reales ni está conectado a ningún servidor. Las contraseñas se guardan en LocalStorage sin cifrar, algo que se corregirá en versiones futuras con implementación de backend real.
+🇪🇸 Este proyecto es únicamente con fines educativos. No almacena datos reales ni está conectado a ningún servidor propio. Las contraseñas se guardan en LocalStorage sin cifrar, algo que se corregirá en versiones futuras con implementación de backend real.
 
-🇺🇸 This project is for educational purposes only. It does not store real data or connect to any server. Passwords are stored unencrypted in LocalStorage, which will be addressed in future versions with a real backend implementation.
+🇺🇸 This project is for educational purposes only. It does not store real data or connect to any own server. Passwords are stored unencrypted in LocalStorage, which will be addressed in future versions with a real backend implementation.
