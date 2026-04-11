@@ -159,11 +159,17 @@ body {
     border-radius: 8px;
     text-align: center;
     border: 1px solid var(--border-color);
+    box-shadow: 0 0 12px rgba(159, 239, 0, 0.08), inset 0 0 0 1px rgba(159, 239, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 0 22px rgba(159, 239, 0, 0.18), inset 0 0 0 1px rgba(159, 239, 0, 0.1);
 }
 
 .stat-card h2 {
     color: var(--primary);
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 /* Botón Login navbar */
 .btn-login {
