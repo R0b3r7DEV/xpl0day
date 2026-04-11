@@ -17,6 +17,7 @@ CLAUDE.md
 # El directorio no necesita estar en /usr/share/nginx/html
 # ============================================================
 nginx/
+!nginx/default.conf
 
 # ============================================================
 # DOCKER
