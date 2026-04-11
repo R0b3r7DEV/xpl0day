@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const initial = activeUser.username.substring(0, 2).toUpperCase();
     document.querySelector('.avatar').textContent = initial;
 
+    // Actualizamos las estadísticas rápidas del card de progreso
+    const elMachines = document.getElementById('stat-machines');
+    const elPoints   = document.getElementById('stat-points');
+    const elRank     = document.getElementById('stat-rank');
+    if (elMachines) elMachines.textContent = activeUser.machinesCompleted || 0;
+    if (elPoints)   elPoints.textContent   = localStorage.getItem('xpl0day_puntos') || activeUser.points || 0;
+    if (elRank)     elRank.textContent     = localStorage.getItem('xpl0day_rango')  || activeUser.rank  || '—';
+
     // Actualizamos los puntos en la parte superior derecha
     // (Asumimos que el HTML tiene un span dentro de .mini-stat para los puntos)
     const pointsElement = document.querySelectorAll('.mini-stat span')[0];
