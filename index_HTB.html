@@ -15,6 +15,7 @@
         <div class="nav-container">
             <img src="assets/logo.svg" alt="XPL0DAY Icon" class="logo-icon">
             <a href="index_HTB.html" class="logo">XPL<span>0</span>DAY</a>
+            <button id="nav-toggle" aria-label="Abrir menú">&#9776;</button>
             <ul class="nav-menu">
                 <li><a href="#labs">Laboratorios</a></li>
                 <li><a href="#how">Cómo funciona</a></li>
@@ -152,6 +153,12 @@
         </div>
     </footer>
 
+    <script>
+        // Hamburguesa: mostrar/ocultar menú en móvil
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('nav-open');
+        });
+    </script>
     <script src="js/enigma.js"></script>
 </body>
 </html>

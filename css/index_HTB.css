@@ -373,8 +373,96 @@ body {
 
 .footer-bottom a:hover { text-decoration: underline; }
 
-/* Responsive */
+/* Hamburguesa — oculta en escritorio */
+#nav-toggle {
+    display: none;
+}
+
+/* Botones hero — fila en escritorio */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ================================
+   RESPONSIVE — MÓVIL
+================================ */
 @media (max-width: 768px) {
+
+    /* --- Navbar hamburguesa --- */
+    #nav-toggle {
+        display: block;
+        background: transparent;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        font-size: 1.4rem;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        line-height: 1;
+        order: 3;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #080d16;
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 5%;
+        gap: 16px;
+        z-index: 99;
+        box-sizing: border-box;
+    }
+
+    .nav-menu.nav-open {
+        display: flex;
+    }
+
+    .nav-menu li a {
+        margin-left: 0;
+        font-size: 1rem;
+    }
+
+    /* --- Hero layout en columna --- */
+    .hero {
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .terminal {
+        min-width: unset;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    /* --- Botones hero en columna --- */
+    .hero-btns {
+        flex-direction: column;
+    }
+
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* --- Sección Cómo funciona --- */
     .steps-grid { flex-direction: column; gap: 20px; }
     .step-connector { transform: rotate(90deg); }
     .step-card { width: 100%; max-width: 350px; }
