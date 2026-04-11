@@ -1,0 +1,24 @@
+name: Deploy a producción
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Desplegar en VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Conectar al VPS y desplegar
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/n2k/xpl0day
+            git pull
+            docker compose up -d --build
