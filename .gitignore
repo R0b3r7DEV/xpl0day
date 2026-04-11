@@ -1,0 +1,131 @@
+# ============================================================
+# CREDENCIALES Y VARIABLES DE ENTORNO
+# ============================================================
+.env
+.env.*
+.env.local
+.env.development
+.env.staging
+.env.production
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+config/secrets.*
+
+# ============================================================
+# NODE.JS
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+.yarn/
+.pnp.*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ============================================================
+# LOGS
+# ============================================================
+logs/
+*.log
+*.log.*
+log/
+
+# ============================================================
+# DOCKER
+# ============================================================
+.docker/
+docker-compose.override.yml
+docker-compose.local.yml
+
+# ============================================================
+# SSL / CERTIFICADOS (Let's Encrypt)
+# ============================================================
+/etc/letsencrypt/
+letsencrypt/
+certbot/
+*.csr
+
+# ============================================================
+# SISTEMA OPERATIVO — WINDOWS
+# ============================================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# ============================================================
+# SISTEMA OPERATIVO — macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ============================================================
+# IDEs Y EDITORES
+# ============================================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+\#*\#
+.\#*
+
+# ============================================================
+# CLAUDE CODE
+# ============================================================
+.claude/
+
+# ============================================================
+# ARCHIVOS TEMPORALES Y DE BUILD
+# ============================================================
+dist/
+build/
+tmp/
+temp/
+.cache/
+*.tmp
+*.bak
+*.orig
+*.rej
