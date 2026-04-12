@@ -49,8 +49,11 @@
         </div>
     </aside>
 
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <main class="main-content">
         <header class="top-bar">
+            <button id="sidebar-toggle" aria-label="Abrir menú">&#9776;</button>
             <h1>Perfil de Usuario</h1>
             <div class="stats-overview">
                 <div class="mini-stat">Puntos: <span id="headerPoints">0</span></div>
@@ -213,6 +216,22 @@
     </main>
 
     <script src="js/profile-logic_HTB.js"></script>
+    <script>
+        // Hamburguesa: mostrar/ocultar sidebar en móvil
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar       = document.querySelector('.sidebar');
+        const overlay       = document.getElementById('sidebarOverlay');
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('sidebar-open');
+                overlay.classList.toggle('active');
+            });
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('sidebar-open');
+                overlay.classList.remove('active');
+            });
+        }
+    </script>
     <script src="js/enigma.js"></script>
 
 </body>
