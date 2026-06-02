@@ -12,13 +12,13 @@ jobs:
 
     steps:
       - name: Conectar al VPS y desplegar
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@7eaf76671a0d7eec5d98ee897acda4f968735a17 # v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /home/n2k/xpl0day
+            cd ${{ secrets.DEPLOY_PATH }}
             git pull
             docker compose up -d --build

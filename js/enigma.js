@@ -534,11 +534,16 @@ function getUser() {
     }
 }
 
+// --- ESCAPE HTML (evita XSS al inyectar datos de usuario en el DOM) ---
+function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 // --- TOOLTIP DE BIENVENIDA ---
 setTimeout(() => {
     if (!isOpen) {
         const user = getUser();
-        tooltip.innerHTML = `<strong>Hola ${user.username} 👋</strong><br>Soy Enigma. ¿Necesitas ayuda?`;
+        tooltip.innerHTML = `<strong>Hola ${escHtml(user.username)} 👋</strong><br>Soy Enigma. ¿Necesitas ayuda?`;
         tooltip.style.display = 'block';
         setTimeout(() => { tooltip.style.display = 'none'; }, 4000);
     }
