@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <rect width="24" height="24" rx="4" fill="#050d0a"/>
-  <path fill="none" stroke="#9fef00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,22s8-4,8-10V5l-8-3-8,3v7C4,18,12,22,12,22Z"/>
-  <polyline fill="none" stroke="#9fef00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="8 8 12 12 8 16"/>
-  <line fill="none" stroke="#9fef00" stroke-linecap="round" stroke-width="2" x1="12" y1="16" x2="16" y2="16"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" role="img" aria-label="XPL0DAY">
+  <title>XPL0DAY</title>
+  <rect width="32" height="32" rx="7" fill="#9fef00"/>
+  <path d="M10 11 L18 16 L10 21" fill="none" stroke="#0a0a0a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="18.5" y="18.4" width="7" height="2.6" rx="1" fill="#0a0a0a"/>
 </svg>
