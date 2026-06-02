@@ -27,6 +27,7 @@
     </nav>
 
     <header class="hero">
+        <canvas id="matrix-bg" aria-hidden="true"></canvas>
         <div class="hero-content">
             <h1 class="glitch">Eleva tus habilidades de <span>Hacking</span></h1>
             <p>La plataforma definitiva para entusiastas de la ciberseguridad. Aprende, entrena y domina el arte del pentesting en entornos controlados.</p>
@@ -133,6 +134,57 @@
         </div>
     </section>
 
+    <!-- MÁQUINAS DESTACADAS -->
+    <section id="pro" class="machines-section">
+        <h2 class="section-title">Máquinas Destacadas</h2>
+        <p class="section-subtitle">Objetivos seleccionados para empezar</p>
+        <div class="machines-grid">
+
+            <div class="machine-card">
+                <div class="machine-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#9fef00" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                    <span class="machine-name">Lame</span>
+                    <span class="badge badge-easy">Easy</span>
+                </div>
+                <div class="machine-progress-wrap">
+                    <div class="machine-progress-bar" style="width:87%"></div>
+                </div>
+                <span class="machine-pct">87% completado</span>
+            </div>
+
+            <div class="machine-card">
+                <div class="machine-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#9fef00" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3" />
+                    </svg>
+                    <span class="machine-name">Forest</span>
+                    <span class="badge badge-medium">Medium</span>
+                </div>
+                <div class="machine-progress-wrap">
+                    <div class="machine-progress-bar" style="width:64%"></div>
+                </div>
+                <span class="machine-pct">64% completado</span>
+            </div>
+
+            <div class="machine-card">
+                <div class="machine-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#9fef00" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                    <span class="machine-name">Hackback</span>
+                    <span class="badge badge-hard">Hard</span>
+                </div>
+                <div class="machine-progress-wrap">
+                    <div class="machine-progress-bar" style="width:41%"></div>
+                </div>
+                <span class="machine-pct">41% completado</span>
+            </div>
+
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
@@ -155,16 +207,17 @@
 
     <script>
         // Hamburguesa: mostrar/ocultar menú en móvil
-        document.getElementById('nav-toggle').addEventListener('click', function() {
+        document.getElementById('nav-toggle').addEventListener('click', function () {
             document.querySelector('.nav-menu').classList.toggle('nav-open');
         });
 
-        // Terminal animado en bucle
-        (function () {
-            const output = document.getElementById('terminal-output');
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            const CMD = 'nmap -Pn -sC -sV 10.10.11.20';
-            const LINES = [
+        // === Terminal animado en bucle ===
+        (function () {
+            var output = document.getElementById('terminal-output');
+            var CMD = 'nmap -Pn -sC -sV 10.10.11.20';
+            var LINES = [
                 'Starting Nmap 7.94 ( https://nmap.org )',
                 'Nmap scan report for xpl0day.htb (10.10.11.20)',
                 'Host is up (0.042s latency).',
@@ -179,53 +232,63 @@
                 'Nmap done: 1 IP address (1 host up) scanned in 8.42s',
             ];
 
-            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+            function buildFinal() {
+                output.innerHTML = '';
+                var p0 = document.createElement('p');
+                p0.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> ' + CMD;
+                output.appendChild(p0);
+                LINES.forEach(function (line) {
+                    var p = document.createElement('p');
+                    p.textContent = line;
+                    p.style.color = 'var(--text-main)';
+                    output.appendChild(p);
+                });
+                var fp = document.createElement('p');
+                fp.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span>';
+                output.appendChild(fp);
+            }
+
+            if (reducedMotion) { buildFinal(); return; }
+
+            function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
             async function animate() {
                 while (true) {
                     output.innerHTML = '';
-
-                    // Línea de prompt con cursor parpadeante al final
-                    const promptLine = document.createElement('p');
-                    const prefix = document.createElement('span');
-                    prefix.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> ';
-                    const cmdText = document.createElement('span');
-                    const cursor = document.createElement('span');
+                    var promptLine = document.createElement('p');
+                    var prefSpan = document.createElement('span');
+                    prefSpan.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> ';
+                    var cmdText = document.createElement('span');
+                    var cursor = document.createElement('span');
                     cursor.className = 'blink';
                     cursor.textContent = '_';
-                    promptLine.appendChild(prefix);
+                    promptLine.appendChild(prefSpan);
                     promptLine.appendChild(cmdText);
                     promptLine.appendChild(cursor);
                     output.appendChild(promptLine);
 
-                    // Escritura carácter a carácter con variación aleatoria (~55ms ± 20ms)
-                    for (const char of CMD) {
-                        cmdText.textContent += char;
+                    for (const ch of CMD) {
+                        cmdText.textContent += ch;
                         await sleep(55 + (Math.random() * 40 - 20));
                     }
-
-                    // Pausa tras terminar de escribir el comando
                     await sleep(500);
                     cursor.remove();
 
-                    // Líneas del resultado, una a una
                     for (const line of LINES) {
                         await sleep(280);
-                        const p = document.createElement('p');
+                        var p = document.createElement('p');
                         p.textContent = line;
                         p.style.color = 'var(--text-main)';
                         output.appendChild(p);
                         output.scrollTop = output.scrollHeight;
                     }
 
-                    // Nuevo prompt con cursor al final
                     await sleep(280);
-                    const finalPrompt = document.createElement('p');
-                    finalPrompt.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span>';
-                    output.appendChild(finalPrompt);
+                    var fp = document.createElement('p');
+                    fp.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span>';
+                    output.appendChild(fp);
                     output.scrollTop = output.scrollHeight;
 
-                    // Pausa de ~3.5s antes de reiniciar el ciclo
                     await sleep(3500);
                 }
             }
@@ -233,15 +296,22 @@
             animate();
         })();
 
-        // Contadores animados al entrar en viewport
+        // === Contadores animados al entrar en viewport ===
         (function () {
             var counters = document.querySelectorAll('.stat-num[data-target]');
+
+            if (reducedMotion) {
+                counters.forEach(function (el) {
+                    el.textContent = (el.dataset.prefix || '') + el.dataset.target + (el.dataset.suffix || '');
+                });
+                return;
+            }
 
             counters.forEach(function (el) {
                 el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
             });
 
-            var observer = new IntersectionObserver(function (entries) {
+            var obs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) return;
                     var el = entry.target;
@@ -249,40 +319,86 @@
                     var prefix = el.dataset.prefix || '';
                     var suffix = el.dataset.suffix || '';
                     var duration = 1500;
-                    var startTime = performance.now();
-
+                    var t0 = performance.now();
                     function tick(now) {
-                        var progress = Math.min((now - startTime) / duration, 1);
-                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var prog = Math.min((now - t0) / duration, 1);
+                        var eased = 1 - Math.pow(1 - prog, 3);
                         el.textContent = prefix + Math.round(eased * target) + suffix;
-                        if (progress < 1) requestAnimationFrame(tick);
+                        if (prog < 1) requestAnimationFrame(tick);
                     }
-
                     requestAnimationFrame(tick);
-                    observer.unobserve(el);
+                    obs.unobserve(el);
                 });
             }, { threshold: 0.4 });
 
-            counters.forEach(function (el) { observer.observe(el); });
+            counters.forEach(function (el) { obs.observe(el); });
         })();
 
-        // Fade-in + translateY en las tarjetas de pasos al hacer scroll
+        // === Fade-in + translateY en tarjetas al hacer scroll ===
         (function () {
-            var stepCards = document.querySelectorAll('.step-card');
+            if (reducedMotion) return;
 
-            var stepObserver = new IntersectionObserver(function (entries) {
+            var cards = document.querySelectorAll('.step-card, .machine-card');
+
+            var cardObs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) return;
                     var card = entry.target;
-                    var index = Array.from(stepCards).indexOf(card);
-                    setTimeout(function () {
-                        card.classList.add('visible');
-                    }, index * 160);
-                    stepObserver.unobserve(card);
+                    var grid = card.closest('.steps-grid, .machines-grid');
+                    var siblings = grid ? Array.from(grid.querySelectorAll('.step-card, .machine-card')) : [card];
+                    var index = siblings.indexOf(card);
+                    setTimeout(function () { card.classList.add('visible'); }, index * 160);
+                    cardObs.unobserve(card);
                 });
-            }, { threshold: 0.25 });
+            }, { threshold: 0.2 });
 
-            stepCards.forEach(function (card) { stepObserver.observe(card); });
+            cards.forEach(function (c) { cardObs.observe(c); });
+        })();
+
+        // === Fondo matrix en el hero ===
+        (function () {
+            if (reducedMotion) return;
+
+            var canvas = document.getElementById('matrix-bg');
+            var ctx = canvas.getContext('2d');
+            var fontSize = 13;
+            var chars = '01アイウエオカキクケコサシスセソタチツナニヌ';
+            var cols, drops;
+
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                cols = Math.floor(canvas.width / fontSize);
+                drops = Array.from({ length: cols }, function () {
+                    return Math.floor(Math.random() * -30);
+                });
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(8,13,22,0.06)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#9fef00';
+                ctx.font = fontSize + 'px "Ubuntu Mono", monospace';
+                for (var i = 0; i < cols; i++) {
+                    if (drops[i] < 0) { drops[i]++; continue; }
+                    ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = Math.floor(Math.random() * -30);
+                    }
+                    drops[i]++;
+                }
+            }
+
+            var animId;
+            function loop() { draw(); animId = requestAnimationFrame(loop); }
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) { cancelAnimationFrame(animId); } else { loop(); }
+            });
+            window.addEventListener('resize', resize);
+
+            resize();
+            loop();
         })();
     </script>
     <script src="js/enigma.js"></script>

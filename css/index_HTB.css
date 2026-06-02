@@ -72,6 +72,25 @@ body {
     padding: 100px 5%;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.10;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-content,
+.terminal {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -167,11 +186,12 @@ body {
     text-align: center;
     border: 1px solid var(--border-color);
     box-shadow: 0 0 12px rgba(159, 239, 0, 0.08), inset 0 0 0 1px rgba(159, 239, 0, 0.05);
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .stat-card:hover {
     box-shadow: 0 0 22px rgba(159, 239, 0, 0.18), inset 0 0 0 1px rgba(159, 239, 0, 0.1);
+    transform: translateY(-4px);
 }
 
 .stat-card h2 {
@@ -480,4 +500,107 @@ body {
     .steps-grid { flex-direction: column; gap: 20px; }
     .step-connector { transform: rotate(90deg); }
     .step-card { width: 100%; max-width: 350px; }
+
+    /* --- Máquinas destacadas --- */
+    .machines-grid { grid-template-columns: 1fr; }
+}
+
+/* ================================
+   MÁQUINAS DESTACADAS
+================================ */
+.machines-section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.machines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.machine-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+}
+
+.machine-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.machine-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(159, 239, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.machine-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.machine-name {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-white);
+}
+
+.badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-easy   { background: rgba(159,239,0,0.10);  color: var(--primary);  border: 1px solid rgba(159,239,0,0.3); }
+.badge-medium { background: rgba(255,189,46,0.10); color: var(--warning);  border: 1px solid rgba(255,189,46,0.3); }
+.badge-hard   { background: rgba(255,95,86,0.10);  color: var(--error);    border: 1px solid rgba(255,95,86,0.3); }
+
+.machine-progress-wrap {
+    background: var(--border-color);
+    border-radius: 4px;
+    height: 5px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.machine-progress-bar {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.machine-pct {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-main);
+}
+
+/* ================================
+   ACCESIBILIDAD: SIN MOVIMIENTO
+================================ */
+@media (prefers-reduced-motion: reduce) {
+    .step-card,
+    .machine-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: border-color 0.3s, box-shadow 0.3s !important;
+    }
 }
