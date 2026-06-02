@@ -90,11 +90,11 @@
                     <div class="step-number">01</div>
                     <div class="step-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#9fef00" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
                         </svg>
                     </div>
-                    <h3>Crea tu cuenta</h3>
-                    <p>Regístrate gratis y accede a la plataforma. Empieza como <span class="highlight">Script Kiddie</span> y escala rangos completando retos.</p>
+                    <h3>Conecta</h3>
+                    <p>Descarga el fichero de <span class="highlight">OpenVPN</span> y enlaza tu máquina con el laboratorio. Sin apps, sin complicaciones.</p>
                 </div>
 
                 <div class="step-connector">
@@ -106,11 +106,11 @@
                     <div class="step-number">02</div>
                     <div class="step-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#9fef00" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                         </svg>
                     </div>
-                    <h3>Elige tu objetivo</h3>
-                    <p>Selecciona entre más de <span class="highlight">200 máquinas</span> clasificadas por dificultad. Desde fácil hasta insane.</p>
+                    <h3>Explota</h3>
+                    <p>Enumera servicios, encadena <span class="highlight">exploits</span> y escala privilegios en entornos vulnerables reales.</p>
                 </div>
 
                 <div class="step-connector">
@@ -125,8 +125,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
                         </svg>
                     </div>
-                    <h3>Hackea y aprende</h3>
-                    <p>Conéctate por VPN, explota vulnerabilidades reales y consigue la <span class="highlight">flag</span>. Gana puntos y sube de rango.</p>
+                    <h3>Captura</h3>
+                    <p>Consigue la <span class="highlight">flag</span> de usuario y root. Suma puntos, sube de rango y demuestra tu nivel.</p>
                 </div>
 
             </div>
@@ -264,6 +264,25 @@
             }, { threshold: 0.4 });
 
             counters.forEach(function (el) { observer.observe(el); });
+        })();
+
+        // Fade-in + translateY en las tarjetas de pasos al hacer scroll
+        (function () {
+            var stepCards = document.querySelectorAll('.step-card');
+
+            var stepObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var card = entry.target;
+                    var index = Array.from(stepCards).indexOf(card);
+                    setTimeout(function () {
+                        card.classList.add('visible');
+                    }, index * 160);
+                    stepObserver.unobserve(card);
+                });
+            }, { threshold: 0.25 });
+
+            stepCards.forEach(function (card) { stepObserver.observe(card); });
         })();
     </script>
     <script src="js/enigma.js"></script>

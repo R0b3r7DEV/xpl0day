@@ -234,7 +234,14 @@ body {
     width: 250px;
     text-align: center;
     position: relative;
-    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+}
+
+.step-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .step-card:hover {
