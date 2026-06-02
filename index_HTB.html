@@ -43,14 +43,7 @@
                 <span class="t-dot green"></span>
                 <p>root@xpl0day: ~</p>
             </div>
-            <div class="terminal-body">
-                <p><span class="t-green">➜</span> <span class="t-blue">~</span> nmap -Pn -sC -sV 10.10.11.20</p>
-                <p>Nmap scan report for xpl0day.htb</p>
-                <p>PORT   STATE SERVICE VERSION</p>
-                <p>80/tcp open  http    Apache/2.4.41</p>
-                <p>22/tcp open  ssh     OpenSSH 8.2p1</p>
-                <p><span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span></p>
-            </div>
+            <div class="terminal-body" id="terminal-output"></div>
         </div>
     </header>
 
@@ -158,6 +151,78 @@
         document.getElementById('nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('nav-open');
         });
+
+        // Terminal animado en bucle
+        (function () {
+            const output = document.getElementById('terminal-output');
+
+            const CMD = 'nmap -Pn -sC -sV 10.10.11.20';
+            const LINES = [
+                'Starting Nmap 7.94 ( https://nmap.org )',
+                'Nmap scan report for xpl0day.htb (10.10.11.20)',
+                'Host is up (0.042s latency).',
+                '',
+                'PORT   STATE SERVICE VERSION',
+                '22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.9',
+                '80/tcp open  http    Apache httpd 2.4.41',
+                '| http-title: XPL0DAY - Login',
+                '|_http-server-header: Apache/2.4.41 (Ubuntu)',
+                '',
+                'Service detection performed.',
+                'Nmap done: 1 IP address (1 host up) scanned in 8.42s',
+            ];
+
+            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            async function animate() {
+                while (true) {
+                    output.innerHTML = '';
+
+                    // Línea de prompt con cursor parpadeante al final
+                    const promptLine = document.createElement('p');
+                    const prefix = document.createElement('span');
+                    prefix.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> ';
+                    const cmdText = document.createElement('span');
+                    const cursor = document.createElement('span');
+                    cursor.className = 'blink';
+                    cursor.textContent = '_';
+                    promptLine.appendChild(prefix);
+                    promptLine.appendChild(cmdText);
+                    promptLine.appendChild(cursor);
+                    output.appendChild(promptLine);
+
+                    // Escritura carácter a carácter con variación aleatoria (~55ms ± 20ms)
+                    for (const char of CMD) {
+                        cmdText.textContent += char;
+                        await sleep(55 + (Math.random() * 40 - 20));
+                    }
+
+                    // Pausa tras terminar de escribir el comando
+                    await sleep(500);
+                    cursor.remove();
+
+                    // Líneas del resultado, una a una
+                    for (const line of LINES) {
+                        await sleep(280);
+                        const p = document.createElement('p');
+                        p.textContent = line;
+                        p.style.color = 'var(--text-main)';
+                        output.appendChild(p);
+                    }
+
+                    // Nuevo prompt con cursor al final
+                    await sleep(280);
+                    const finalPrompt = document.createElement('p');
+                    finalPrompt.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span>';
+                    output.appendChild(finalPrompt);
+
+                    // Pausa de ~3.5s antes de reiniciar el ciclo
+                    await sleep(3500);
+                }
+            }
+
+            animate();
+        })();
     </script>
     <script src="js/enigma.js"></script>
 </body>
