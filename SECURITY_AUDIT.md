@@ -301,3 +301,45 @@ Una palabra en el workflow. Protege contra compromiso de la cadena de suministro
 ---
 
 *Informe de solo lectura. Ningún archivo del proyecto fue modificado durante esta auditoría.*
+
+---
+
+## CORRECCIONES APLICADAS
+
+**Fecha:** 2026-06-02 | **Rama:** `fix/seguridad` | **Commit:** `044706d`
+
+Los cinco arreglos de mayor impacto del TOP 5 han sido implementados:
+
+| # | Hallazgo | Archivos modificados | Estado |
+|---|---|---|---|
+| 1 | `.git/` y `.github/` accesibles vía HTTP | `.dockerignore`, `nginx/default.conf` | ✅ Corregido |
+| 2 | Cabeceras HTTP de seguridad ausentes | `nginx/default.conf` | ✅ Corregido |
+| 3 | XSS DOM via `username` en `tooltip.innerHTML` | `js/enigma.js` | ✅ Corregido |
+| 4 | Acción SSH sin SHA fijo (supply chain) | `.github/workflows/deploy.yml` | ✅ Corregido |
+| 5 | Path del servidor hardcodeado en workflow | `.github/workflows/deploy.yml` | ✅ Corregido |
+
+### Detalle de cambios
+
+**`.dockerignore`**
+Añadida la exclusión de `.github/` al contexto de build Docker (`.git/` y `*.md` ya estaban excluidos).
+
+**`nginx/default.conf`**
+- Añadida regla `location ~ /\.` con `deny all; return 404;` para bloquear cualquier ruta que empiece por punto.
+- Añadidas cabeceras: `Strict-Transport-Security` (HSTS 1 año), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` y `Content-Security-Policy` con orígenes explícitos. La directiva `unsafe-inline` en `script-src` es temporal hasta que los scripts inline de `index_HTB.html` se muevan a un archivo externo.
+
+**`js/enigma.js`**
+Creada la función `escHtml()` que escapa `&`, `<`, `>` y `"`. Aplicada sobre `user.username` en `tooltip.innerHTML` (línea 541). Ahora un username con HTML malicioso almacenado en localStorage se renderiza como texto literal.
+
+**`.github/workflows/deploy.yml`**
+- `appleboy/ssh-action@v1.2.0` sustituido por el SHA completo del commit `7eaf76671a0d7eec5d98ee897acda4f968735a17` (con comentario `# v1.2.0` para legibilidad).
+- Path de despliegue `/home/n2k/xpl0day` sustituido por `${{ secrets.DEPLOY_PATH }}`. El secret `DEPLOY_PATH` debe existir en GitHub → Settings → Secrets and variables → Actions.
+
+### Hallazgos pendientes (fuera del alcance de esta rama)
+
+| Hallazgo | Motivo de no corrección |
+|---|---|
+| Contraseñas en texto plano en localStorage | Requiere backend (Spring Boot v1.0) |
+| Manipulación de sesión desde DevTools | Limitación estructural sin backend |
+| API key de Anthropic cliente-side | Decisión de arquitectura — no añadir key en producción |
+| Google Fonts CDN externo | Mejora de privacidad, no urgente |
+| TLS sin OCSP stapling | Mejora menor, requiere revisión de config SSL completa |
