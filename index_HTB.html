@@ -208,6 +208,7 @@
                         p.textContent = line;
                         p.style.color = 'var(--text-main)';
                         output.appendChild(p);
+                        output.scrollTop = output.scrollHeight;
                     }
 
                     // Nuevo prompt con cursor al final
@@ -215,6 +216,7 @@
                     const finalPrompt = document.createElement('p');
                     finalPrompt.innerHTML = '<span class="t-green">➜</span> <span class="t-blue">~</span> <span class="blink">_</span>';
                     output.appendChild(finalPrompt);
+                    output.scrollTop = output.scrollHeight;
 
                     // Pausa de ~3.5s antes de reiniciar el ciclo
                     await sleep(3500);

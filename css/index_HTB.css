@@ -130,7 +130,14 @@ body {
 .terminal-body {
     padding: 20px;
     font-family: 'Ubuntu Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    height: 280px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.terminal-body::-webkit-scrollbar {
+    display: none;
 }
 
 .t-green { color: var(--primary); }
