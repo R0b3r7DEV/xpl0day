@@ -53,3 +53,9 @@ body {
     width: auto;
     height: 4rem;
 }
+
+@media (max-width: 768px) {
+    .logo-icon {
+        height: 2.2rem;
+    }
+}
