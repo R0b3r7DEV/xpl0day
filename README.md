@@ -1,6 +1,8 @@
-# XPL0DAY — Plataforma de Entrenamiento en Ciberseguridad
+# XPL0DAY — Cybersecurity Training Platform (Front-End)
 
-Plataforma web de entrenamiento en ciberseguridad inspirada en HackTheBox, que permite a los usuarios completar un test de nivel inicial, acceder a un catálogo de máquinas virtuales y recibir asistencia guiada en tiempo real mediante un asistente de IA integrado.
+> A HackTheBox-inspired cybersecurity training platform: a skill-assessment quiz, a machine catalog
+> and an in-page AI assistant. Built as a **front-end engineering + DevOps showcase** — vanilla
+> HTML/CSS/JS with no framework, containerized and continuously deployed to a custom domain.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -14,215 +16,139 @@ Plataforma web de entrenamiento en ciberseguridad inspirada en HackTheBox, que p
   <a href="https://www.xpl0day.com"><img alt="Live site" src="https://img.shields.io/badge/🌐_Live_site-www.xpl0day.com-000000?style=for-the-badge" /></a>
 </p>
 
-🌐 **Web en vivo:** [www.xpl0day.com](https://www.xpl0day.com)
+🌐 **Live site:** [www.xpl0day.com](https://www.xpl0day.com) &nbsp;·&nbsp; 🇪🇸 *A Spanish version of this document is available on request.*
+
+<!-- TODO: screenshot — landing page with animated terminal + Enigma assistant -->
+
+> **Scope:** this is a **front-end project**. State (users, session, progress) is persisted in the
+> browser via `localStorage`; there is no backend or database, and the machine catalog is demo data.
+> The value on display is UI/UX engineering, vanilla-JS architecture and a real deployment pipeline —
+> a backend (Spring Boot + MySQL) is planned in the roadmap.
 
 ---
 
-## Características principales
+## Features
 
-- **Landing page** con terminal animada, estadísticas de la plataforma y sección explicativa del flujo de uso.
-- **Registro con validación** — medidor de seguridad de contraseña en tiempo real, comprobación de unicidad de usuario y código de invitación opcional.
-- **Autenticación con gestión de sesión** — login con animación de verificación por fases y redirección inteligente según estado del usuario.
-- **Test de nivel inicial** — 15 preguntas en 7 categorías (Redes, Linux, Kali Linux, Windows, Web, Criptografía, Herramientas) que asignan automáticamente un rango: `Script Kiddie`, `Hacker` o `Elite`.
-- **Dashboard** con listado de máquinas activas, consola de actividad en tiempo real y barra de progreso de rango.
-- **Catálogo de máquinas** con 12 máquinas, filtros combinables por dificultad, sistema operativo y estado, y búsqueda en tiempo real.
-- **Perfil de usuario** con estadísticas, visualización del progreso de rango, historial de actividad y sistema de badges/logros.
-- **Enigma** — asistente de IA flotante, presente en todas las páginas, con animación de robot androide en SVG, historial de conversación y hints progresivos adaptados al rango del usuario, impulsado por la API de Claude (Anthropic).
-- **Diseño responsive** con sidebar colapsable, adaptado a móvil y escritorio.
+- **Landing page** with an animated terminal, platform stats and a how-it-works section.
+- **Registration with validation** — real-time password-strength meter, username uniqueness check and
+  optional invite code.
+- **Session management** — login with a phased verification animation and smart redirect based on the
+  user's state (quiz completed or not).
+- **Skill-assessment quiz** — 15 questions across 7 categories (Networking, Linux, Kali, Windows, Web,
+  Cryptography, Tools) that automatically assign a rank: `Script Kiddie`, `Hacker` or `Elite`.
+- **Dashboard** with active machines, a live activity console and a rank-progress bar.
+- **Machine catalog** — 12 machines with combinable filters (difficulty, OS, status) and live search.
+- **User profile** with stats, rank progression, activity history and a badges/achievements system.
+- **Enigma** — a floating AI assistant present on every page (animated SVG robot) with conversation
+  history and progressive hints adapted to the user's rank, powered by the Claude API (Anthropic).
+- **Responsive design** with a collapsible sidebar, tuned for mobile and desktop.
 
 ---
 
-## Stack tecnológico
+## Tech stack
 
-| Tecnología | Versión / Nota | Uso |
+| Technology | Note | Used for |
 |---|---|---|
-| HTML5 | — | Estructura de todas las páginas |
-| CSS3 + Variables CSS | — | Estilos, paleta global, diseño responsive |
-| JavaScript (Vanilla) | ES6+ | Lógica de negocio, sesión, filtros, UI dinámica |
-| LocalStorage API | Nativa del navegador | Persistencia de usuarios y sesión activa |
-| SVG animado | — | Robot Enigma, logo y favicon |
-| Claude API (Anthropic) | `claude-sonnet-4-20250514` | Asistente Enigma en tiempo real |
-| Google Fonts | Ubuntu Mono | Tipografía temática terminal |
-| Docker + Nginx Alpine | — | Contenedor de producción con GZIP y TLS |
-| Let's Encrypt | — | Certificados SSL/TLS automáticos |
-| GitHub Actions | — | CI/CD: despliegue automático al VPS en cada push a `main` |
+| HTML5 | — | Page structure |
+| CSS3 + CSS custom properties | — | Styling, global palette, responsive layout |
+| JavaScript (Vanilla) | ES6+ | Business logic, session, filters, dynamic UI |
+| LocalStorage API | browser-native | User & session persistence |
+| Animated SVG | — | Enigma robot, logo, favicon |
+| Claude API (Anthropic) | — | Real-time Enigma assistant |
+| Docker + Nginx (Alpine) | — | Production container with GZIP and TLS |
+| Let's Encrypt | — | Automatic SSL/TLS certificates |
+| GitHub Actions | — | CI/CD: auto-deploy to the VPS on every push to `main` |
 
-> Este proyecto no tiene ningún paso de compilación (no npm, no bundler, no framework). Es HTML/CSS/JS puro servido por Nginx.
-
----
-
-## Requisitos previos
-
-Para desarrollo local no se necesita nada más que un navegador web moderno.
-
-Para el despliegue con Docker:
-
-- [Docker](https://docs.docker.com/get-docker/) y [Docker Compose](https://docs.docker.com/compose/) instalados.
-- (Producción) Certificados SSL en `/etc/letsencrypt` en el host (Let's Encrypt / Certbot).
+> No build step: no npm, no bundler, no framework. Pure HTML/CSS/JS served by Nginx.
 
 ---
 
-## Instalación y uso en local
+## Technical highlights
+
+- **Self-contained AI widget.** `js/enigma.js` is a ~690-line IIFE that injects its own styles,
+  animated SVG and chat panel into any page it's included on, reads the user's rank from localStorage
+  to tune the Claude `system` prompt, keeps conversation history in memory, and formats code blocks /
+  bold in the AI responses.
+- **Auth & session without a backend.** Persistence lives in two localStorage keys (`xpl0day_users`,
+  `xpl0day_active_user`); the login redirect inspects a `testCompleted` flag to simulate a real
+  onboarding flow.
+- **CI/CD with GitHub Actions.** Every push to `main` triggers a workflow that SSHes into the VPS and
+  runs `git pull && docker compose up -d --build` — continuous deployment with no manual step.
+- **Fully tokenized CSS.** `css/global.css` centralizes palette, typography and spacing as CSS
+  variables, so the entire theme can be changed from a single file.
+
+---
+
+## Project structure
+
+```
+├── *_HTB.html          # pages: landing, login, register, quiz, dashboard, machines, profile
+├── css/
+│   ├── global.css      # global CSS variables (palette, typography, spacing)
+│   └── *_HTB.css       # per-page styles
+├── js/
+│   ├── enigma.js               # floating AI assistant (loaded on every page)
+│   ├── script_HTB.js           # login & session
+│   ├── register-logic_HTB.js   # validation & registration
+│   ├── test-logic_HTB.js       # quiz engine
+│   ├── dashboard-logic_HTB.js  # dashboard logic
+│   ├── machines-logic_HTB.js   # machine filters
+│   └── profile-logic_HTB.js    # rank / progress
+├── assets/             # logo, favicon, avatar (SVG)
+├── nginx/default.conf  # Nginx config (GZIP, TLS, SPA fallback)
+├── Dockerfile · docker-compose.yml
+└── .github/workflows/deploy.yml   # CI/CD: auto-deploy to VPS on push to main
+```
+
+---
+
+## Run it
+
+**Locally** — no dependencies, no server needed:
 
 ```bash
-# 1. Clonar el repositorio
 git clone https://github.com/R0b3r7DEV/xpl0day.git
 cd xpl0day
-
-# 2. Abrir directamente en el navegador (sin servidor)
-# En Windows:
-start index_HTB.html
-
-# En macOS:
-open index_HTB.html
-
-# En Linux:
-xdg-open index_HTB.html
+start index_HTB.html      # Windows  (macOS: open …  ·  Linux: xdg-open …)
 ```
 
-No hay dependencias que instalar. Cualquier edición en los archivos se refleja al recargar el navegador.
-
----
-
-## Uso con Docker
+**With Docker:**
 
 ```bash
-# Construir la imagen y arrancar el contenedor
-docker compose up --build
-
-# Arrancar en segundo plano
-docker compose up -d
-
-# Detener
-docker compose down
+docker compose up --build   # serves on :80 (HTTP) and :443 (HTTPS)
 ```
 
-El contenedor sirve la aplicación en el puerto `80` (HTTP) y `443` (HTTPS con TLS 1.2/1.3).
-
----
-
-## Configuración del asistente Enigma (API key)
-
-El widget Enigma llama directamente a la API de Anthropic desde el navegador. Para activarlo, es necesario añadir una API key válida en [js/enigma.js](js/enigma.js), en la función `sendMessage()` (aproximadamente línea 615):
-
-```js
-// js/enigma.js — función sendMessage()
-headers: {
-    'Content-Type': 'application/json',
-    'x-api-key': 'TU_API_KEY_AQUÍ',   // <-- reemplazar por tu clave real
-    'anthropic-version': '2023-06-01',
-    'anthropic-dangerous-direct-browser-access': 'true'
-}
-```
-
-> **Nota de seguridad:** Al ser un proyecto puramente frontend, la API key queda expuesta en el código fuente del navegador. Esta arquitectura es aceptable para uso educativo o demo. No usar una clave de producción con límites de facturación altos. En la versión con backend (v1.0) las llamadas se harán desde el servidor.
-
----
-
-## Estructura del proyecto
-
-```
-xpl0day/
-├── index_HTB.html          # Landing page
-├── login_HTB.html          # Autenticación
-├── register_HTB.html       # Registro de usuario
-├── test_HTB.html           # Test de nivel inicial (15 preguntas)
-├── dashboard_HTB.html      # Panel principal
-├── machines_HTB.html       # Catálogo de máquinas con filtros
-├── profile_HTB.html        # Perfil y estadísticas del usuario
-│
-├── css/
-│   ├── global.css          # Variables CSS globales (paleta, tipografía, espaciado)
-│   ├── index_HTB.css
-│   ├── login_HTB.css
-│   ├── register_HTB.css
-│   ├── test_HTB.css
-│   ├── dashboard_HTB.css
-│   ├── machines_HTB.css
-│   └── profile_HTB.css
-│
-├── js/
-│   ├── enigma.js                  # Widget IA flotante (universal, todas las páginas)
-│   ├── script_HTB.js              # Lógica de login y sesión
-│   ├── register-logic_HTB.js      # Validación y registro
-│   ├── test-logic_HTB.js          # Motor del test de nivel
-│   ├── dashboard-logic_HTB.js     # Lógica del dashboard
-│   ├── machines-logic_HTB.js      # Filtros y gestión de máquinas
-│   └── profile-logic_HTB.js       # Cálculo de progreso y rango
-│
-├── assets/
-│   ├── logo.svg
-│   ├── favicon.svg
-│   └── avatar_R0b3r7DEV.svg
-│
-├── nginx/
-│   └── default.conf        # Configuración Nginx (GZIP, TLS, SPA fallback)
-│
-├── Dockerfile
-├── docker-compose.yml
-└── .github/
-    └── workflows/
-        └── deploy.yml      # CI/CD: auto-deploy al VPS en push a main
-```
-
----
-
-## Aspectos técnicos destacables
-
-### Autenticación y sesión sin backend
-
-Toda la persistencia se gestiona mediante la API de LocalStorage del navegador con dos claves principales:
-
-- `xpl0day_users` — array con todos los usuarios registrados.
-- `xpl0day_active_user` — objeto del usuario en sesión activa.
-
-El flujo de redirección en el login comprueba el flag `testCompleted` del usuario para dirigirle al test o directamente al dashboard, lo que simula un sistema de onboarding real.
-
-### Enigma: integración directa con Claude API desde el navegador
-
-El widget Enigma (`js/enigma.js`) es una IIFE autocontenida (~690 líneas) que:
-
-1. Inyecta sus propios estilos, SVG animado y panel de chat en el DOM de cualquier página donde se incluya.
-2. Lee el rango del usuario desde LocalStorage y lo pasa al `system prompt` de Claude para adaptar la dificultad de los hints.
-3. Mantiene el historial de conversación en memoria durante la sesión de navegación.
-4. Formatea las respuestas de la IA aplicando estilos a bloques de código (backticks) y negrita (asteriscos dobles).
-
-### Pipeline CI/CD con GitHub Actions
-
-Cada push a la rama `main` desencadena automáticamente un workflow que se conecta al VPS por SSH y ejecuta `git pull && docker compose up -d --build`, consiguiendo despliegue continuo sin intervención manual.
-
-### CSS totalmente basado en custom properties
-
-`css/global.css` centraliza toda la paleta de color, tipografía y espaciado como variables CSS (`--color-primary: #9fef00`, etc.). Ninguna hoja de estilos específica de página usa valores hardcodeados, lo que permite cambiar el tema completo desde un único archivo.
+**Enigma assistant:** the widget calls the Anthropic API directly from the browser, so it needs an API
+key set in `js/enigma.js` (`sendMessage()`, ~line 615). Because this is a front-end-only project the
+key is exposed client-side — use only a limited/educational key, never a production one. Moving these
+calls to a server proxy is part of the planned backend.
 
 ---
 
 ## Roadmap
 
-### v0.3 — Completado
-- Test de nivel con 15 preguntas y asignación automática de rango
-- Widget Enigma con Claude AI integrado
-- Flujo completo: Registro → Login → Test → Dashboard
-
-### v0.4 — En desarrollo
-- [ ] Página de retos (`challenges_HTB.html`)
-- [ ] Generador de informes de pentest en PDF al completar una máquina
-- [ ] Datos del dashboard dinámicos por usuario
-
-### v1.0 — Con backend
-- [ ] API REST con Spring Boot (Java)
-- [ ] Base de datos MySQL con hashing de contraseñas (bcrypt)
-- [ ] Perfil público compartible con URL propia
-- [ ] Tabla de clasificación global
+- **v0.4 (in progress):** challenges page, PDF pentest report on machine completion, per-user dynamic
+  dashboard data.
+- **v1.0 (backend):** Spring Boot REST API, MySQL with bcrypt-hashed passwords, shareable public
+  profiles and a global leaderboard.
 
 ---
 
-## Autor
+## What I learned building this
 
-Desarrollado por **[R0b3r7DEV](https://github.com/R0b3r7DEV)**, estudiante de CFGS Desarrollo de Aplicaciones Web con experiencia práctica en HackTheBox (rango **Hacker**), pentesting y bug bounty hunting.
+- Architecting a **multi-page vanilla-JS app** with shared session state, a reusable injectable widget
+  and a fully tokenized CSS design system — no framework crutches.
+- Building a **containerized deployment** (Docker + Nginx) with a **GitHub Actions CI/CD pipeline** and
+  automatic **Let's Encrypt TLS** to a custom domain.
+- Integrating an **LLM assistant** into a plain web app and adapting its behavior to app state.
+- Understanding the security limits of a front-end-only design (client-side keys, unhashed storage) and
+  planning the backend that resolves them.
 
 ---
 
-## Aviso
+## Notice
 
-Proyecto con fines educativos. No almacena datos reales ni se conecta a servidores propios. Las contraseñas se guardan en LocalStorage sin cifrar; esto se resolverá en v1.0 al implementar el backend con hashing bcrypt.
+Educational project. It does not store real data or connect to owned servers. Passwords are kept in
+localStorage unencrypted by design; this is addressed in v1.0 with a backend and bcrypt hashing.
+
+Built by **[R0b3r7DEV](https://github.com/R0b3r7DEV)**.
