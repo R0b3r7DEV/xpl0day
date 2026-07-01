@@ -10,6 +10,12 @@ Plataforma web de entrenamiento en ciberseguridad inspirada en HackTheBox, que p
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
 
+<p>
+  <a href="https://www.xpl0day.com"><img alt="Live site" src="https://img.shields.io/badge/🌐_Live_site-www.xpl0day.com-000000?style=for-the-badge" /></a>
+</p>
+
+🌐 **Web en vivo:** [www.xpl0day.com](https://www.xpl0day.com)
+
 ---
 
 ## Características principales
