@@ -59,3 +59,15 @@ body {
         height: 2.2rem;
     }
 }
+/* 4. AVISO DE PROTOTIPO (visible al pie de todas las páginas) */
+.aviso-prototipo {
+    padding: 16px 20px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+    opacity: 0.6;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-dark);
+}
